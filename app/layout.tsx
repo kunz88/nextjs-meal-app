@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import MainHeader from "@/components/main-header/main-header";
 // invece di utilizzare il tag head utilizziamo questo formato per inserie i metadata
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
+        <MainHeader />
         {children}
       </body>
     </html>
