@@ -19,4 +19,19 @@ const getMeals = async (): Promise<Meal[]> => {
     throw error;
   }
 };
-export default getMeals;
+
+const getMeal = async (slug: string): Promise<Meal | undefined> => {
+  if (!db) {
+    throw new Error("The database connection is null.");
+  }
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return db
+      .prepare<String, Meal>(`SELECT * FROM meals WHERE slug = ?`)
+      .get(slug);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+export { getMeal, getMeals };

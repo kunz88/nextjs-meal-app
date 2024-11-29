@@ -17,8 +17,9 @@ const MainHeader = () => {
             </Link>
             <nav className={classes.nav}>
                 <ul>
-                    <li>
-                        {links.map((link) => <NavLink pathName={link.pathName} title={link.title} />)}
+                    <li >
+                        {links.map((link) => <NavLink pathName={link.pathName} title={link.title} key={link.title
+                        } />)}
                     </li>
                 </ul>
             </nav>

@@ -1,10 +1,10 @@
 import MealItem from "./meals-item";
 
 import classes from './meals-grid.module.css'
+import { getMeals } from "@/lib/meal";
 
-const MealsGrid = ({ meals }: {
-    meals: Meal[]
-}) => {
+const MealsGrid = async () => {
+    const meals = await getMeals();
     return (
         <ul className={classes.meals}>
             {meals.map((meal) => (
