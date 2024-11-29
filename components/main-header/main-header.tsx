@@ -8,6 +8,8 @@ import NavLink from "../nav-link/nav-link";
 
 
 const MainHeader = () => {
+
+
     const links = [{ pathName: '/meals', title: 'Browse meal' }, { pathName: '/community', title: 'Foodies community' }]
     return (
         <header className={classes.header}>

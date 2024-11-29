@@ -1,12 +1,17 @@
 import { getMeal } from '@/lib/meal';
 import classes from './page.module.css'
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 
+    
 const MealsDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const slug = (await params).slug
     const meal = await getMeal(slug)
-
+    if (!meal) {
+        notFound();
+    }
+    const instructions = meal?.instructions.replace(/\n/g, '<br/>');
     console.log(meal)
     return (
         <>
@@ -25,7 +30,7 @@ const MealsDetails = async ({ params }: { params: Promise<{ slug: string }> }) =
             </header>
             <main>
                 <p className={classes.instructions} dangerouslySetInnerHTML={{
-                    __html: meal?.instructions ?? ''
+                    __html: instructions ?? ''
                 }} ></p>
 
 
